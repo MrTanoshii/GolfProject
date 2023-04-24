@@ -1,5 +1,5 @@
 from django import template
-from main.models import Subscription,SubPlan
+from golfApp.models import Subscription,SubPlan
 from django.contrib.auth.models import User
 from datetime import date
 

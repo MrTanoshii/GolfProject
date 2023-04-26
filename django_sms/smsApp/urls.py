@@ -4,7 +4,6 @@ from . import views
 from django.contrib.auth import views as auth_views
 from django.views.generic.base import RedirectView
 from homepage.views import HomePageView
-
 from django.conf import settings
 from django.conf.urls.static import static
 

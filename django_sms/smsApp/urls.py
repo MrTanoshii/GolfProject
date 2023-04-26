@@ -3,12 +3,14 @@ from django.urls import path,include
 from . import views
 from django.contrib.auth import views as auth_views
 from django.views.generic.base import RedirectView
+from homepage.views import HomePageView
 
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('',views.home, name="home-page"),
+    # path('',views.home, name="home-page"),
+    path('',HomePageView.as_view(), name="home-page"),
     path('login',views.login_page,name='login-page'),
     path('register',views.userregister,name='register-page'),
     path('save_register',views.save_register,name='register-user'),
@@ -36,4 +38,10 @@ urlpatterns = [
     path('save_member',views.save_member,name='save-member'),
     path('delete_member/<int:pk>',views.delete_member,name='delete-member'),
     path('group_member',views.per_group,name='group-member'),
+    # path('view_card/<int:pk>',views.view_card,name='view-card'),
+    # path('view_member',views.view_details,name='scanned-code'),
+    # path('scanner',views.view_scanner,name='scanner'),
+    # path('view_details',views.view_details,name='scanned-code'),
+
+    
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

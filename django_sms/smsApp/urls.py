@@ -4,6 +4,10 @@ from . import views
 from django.contrib.auth import views as auth_views
 from django.views.generic.base import RedirectView
 from homepage.views import HomePageView
+<<<<<<< HEAD
+=======
+
+>>>>>>> c8370891e660fbf00968e0563da9c69de366a940
 from django.conf import settings
 from django.conf.urls.static import static
 

@@ -1,0 +1,37 @@
+{% load qr_code %}{% load static %}
+<!-- <script src="{% static 'assets/default/js/jquery-3.6.0.min.js' %}"></script> -->
+<script src="{% static 'assets/instascan.min.js' %}"></script>
+<style>
+    #uni_modal .modal-footer {
+        display: none
+    }
+
+    #uni_modal .modal-sub-footer {
+        display: flex
+    }
+
+    #scanner {
+        width: 100%;
+        height: 50vh;
+        margin: 0px auto;
+        position: relative;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    #scanner-focus {
+        background: #00000085;
+        -webkit-clip-path: polygon(0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0%);
+        clip-path: polygon(0% 0%, 0% 100%, 25% 100%, 25% 25%, 75% 25%, 75% 75%, 25% 75%, 25% 100%, 100% 100%, 100% 0%);
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+</style>
+<body>
+    <div class="ui container">
+        <h1>{{name}} - {{obj.name}}</h1>
+        <img src="obj.qr_code.url">
+    </div>
+</body>

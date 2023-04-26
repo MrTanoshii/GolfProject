@@ -39,7 +39,8 @@ urlpatterns = [
     path('delete_member/<int:pk>',views.delete_member,name='delete-member'),
     path('group_member',views.per_group,name='group-member'),
     # path('view_card/<int:pk>',views.view_card,name='view-card'),
-    # path('view_member',views.view_details,name='scanned-code'),
+    path('view_member',views.view_details,name='scanned-code'),
+    path('scanner',views.view_scanner,name='scanner'),
     # path('view_details',views.view_details,name='scanned-code'),
 
     

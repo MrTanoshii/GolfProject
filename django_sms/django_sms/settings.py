@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'smsApp.apps.smsAppConfig',
     "homepage.apps.HomepageConfig",
-    "scanner",
+    "scanner.apps.ScannerConfig",
 ]
 
 MIDDLEWARE = [

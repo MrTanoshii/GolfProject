@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'smsApp.apps.smsAppConfig',
     "homepage.apps.HomepageConfig",
-    "qr_code",
     "scanner",
 ]
 

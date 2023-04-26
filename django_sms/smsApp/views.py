@@ -363,6 +363,31 @@ def delete_member(request, pk = None):
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
+def view_card(request, pk=None):
+    if pk is None:
+        return HttpResponse("Member ID is Invalid")
+    else:
+        context = context_data()
+        context['member'] = models.Member.objects.get(id=pk)
+        return render(request, 'view_id.html', context)
+
+@login_required
+def view_scanner(request):
+    context = context_data(request)  # Pass request object to context_data function
+    return render(request, 'scanner.html', context)
+
+
+
+@login_required
+def view_details(request, code=None):
+    if code is None:
+        return HttpResponse("Member code is Invalid")
+    else:
+        context = context_data()
+        context['member'] = models.Member.objects.get(member_code=code)
+        return render(request, 'view_member.html', context)
+
+
 @login_required
 def per_group(request):
     context = context_data(request)

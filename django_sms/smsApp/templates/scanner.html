@@ -2,6 +2,11 @@
 <!-- <script src="{% static 'assets/default/js/jquery-3.6.0.min.js' %}"></script> -->
 <script src="{% static 'assets/instascan.min.js' %}"></script>
 <style>
+    #uni_modal .modal-dialog {
+        max-width: 100%;
+        height: calc(100% - 30px);
+        margin: 0px auto;
+    }
     #uni_modal .modal-footer {
         display: none
     }
@@ -28,10 +33,19 @@
         top: 0;
         left: 0;
     }
+    img{
+        display: block;
+        margin: 0 auto;
+        width: 40%;
+        height: auto;
+
+    }
+    h1{
+        text-align: center;}
 </style>
 <body>
     <div class="ui container">
         <h1>{{name}} - {{obj.name}}</h1>
-        <img src="obj.qr_code.url">
+        <img src="{{obj.qr_code.url}}">
     </div>
 </body>

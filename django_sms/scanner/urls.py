@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('scanner/', ScannerView.as_view(), name='scanner'),
+    path('scanner/', ScannerView, name='scanner'),
     # other URL patterns...
 ]
 

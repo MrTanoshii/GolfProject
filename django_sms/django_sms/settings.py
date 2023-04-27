@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'smsApp.apps.smsAppConfig',
     "homepage.apps.HomepageConfig",
     "scanner.apps.ScannerConfig",
+    
 ]
 
 MIDDLEWARE = [

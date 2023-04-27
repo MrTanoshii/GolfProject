@@ -18,7 +18,8 @@ padding: 0;
 } */
 /* Set up page layout */
 body {
-font-family: Poppins;
+font-family:Comic Sans MS, Comic Sans, cursive;
+/* font-family :Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif !important; */
 font-size: 16px;
 line-height: 1.5;
 /* color: #333; */
@@ -38,7 +39,7 @@ font-weight: bold;
 margin: 0;
 }
 
-nav ul {
+/* nav ul {
 list-style: none;
 margin: 0;
 padding: 0;
@@ -59,14 +60,14 @@ text-transform: uppercase;
 
 nav a:hover {
 color: #6c63ff;
-}
+} */
 
 #hero {
 /* background-image: url('{% static "images/golf.jpg" %}'); */
 background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('{% static "images/golf.jpg" %}');
 background-size: cover;
 background-position: center;
-height: 500px;
+height: 550px;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -93,8 +94,8 @@ margin: 20px 0;
 .button {
 display: inline-block;
 padding: 10px 20px;
-background-color: #6c63ff;
-color: #fff;
+background-color: black;
+color: white;
 font-weight: bold;
 text-transform: uppercase;
 border-radius: 5px;
@@ -120,11 +121,19 @@ padding: 20px;
 background-color: #fff;
 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 text-align: center;
+border-radius: 30px;
+transition:all ease-in-out 0.5s;
 }
 
+.feature:hover{
+    transform: translate(0px,-10px);
+    transition:all ease-in-out 0.5s;
+}
+
+/* rgba for lightgreen */
 .feature i {
-font-size: 48px;
-color: #6c63ff;
+font-size: 30px;
+color: lightgreen;
 margin-bottom: 20px;
 }
 
@@ -132,16 +141,24 @@ margin-bottom: 20px;
 font-size: 24px;
 font-weight: bold;
 margin-bottom: 10px;
+
 }
+
+.feature h3 a {
+    text-decoration: none;
+    color: black;
+}
+
 
 .feature p {
 font-size: 16px;
 color: #333;
 }
 
+/* rgba for lightgrey footer */
 footer {
-background-color: #6c63ff;
-color: #fff;
+background-color:white;
+color: black;
 padding: 20px;
 text-align: center;
 }
@@ -154,7 +171,7 @@ margin: 0;
 </head>
 
 <body>
-    <header>
+    <!-- <header>
         <h1>Grand Baie Golf Club</h1>
         <nav>
             <ul>
@@ -163,7 +180,7 @@ margin: 0;
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
-    </header>
+    </header> -->
     <section id="hero">
         <h2>Welcome to Grand Baie Golf Club</h2>
         <p>Enjoy a round of golf in the beautiful surroundings of Mauritius.</p>
@@ -182,9 +199,9 @@ margin: 0;
         </div>
         <div class="feature">
             <i class="fas fa-qrcode"></i>
-            <h3>View Scanner</h3>
+            <h3><a href="{% url 'scanner' %}">View Scanner</h3></a>
             <p>Scan a member's QR code to view their details.</p>
-            <a href="{% url 'scanner' %}" class="button">View Scanner</a>
+            <!-- <a href="{% url 'scanner' %}" class="button">View Scanner</a> -->
         </div>
        
     </section>

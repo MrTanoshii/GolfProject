@@ -2,29 +2,91 @@
 <header>
     <!-- Intro settings -->
     <style>
-        #intro {
+        /* #intro {
             /* Margin to fix overlapping fixed navbar */
-            margin-top: 58px;
+            /* margin-top: 58px;
         }
-        
-        @media (max-width: 991px) {
+         */
+        /* @media (max-width: 991px) {
             #intro {
                 /* Margin to fix overlapping fixed navbar */
-                margin-top: 45px;
-            }
-        }
-        #uni_modal .modal-sub-footer{
+                /* margin-top: 45px; */
+            /* }
+        } */
+        /* #uni_modal .modal-sub-footer{
             display:none;
-        }
+        } */ */ */
+body{
+font-family:Comic Sans MS, Comic Sans, cursive!important;
+
+}
+        
+        .navbar {
+  height: 100px !important;
+  font-size: 16px !important;
+}
+
+.navbar-brand {
+  font-size: 24px !important;
+  font-weight: bold !important;
+  color: #000000 !important;
+  text-transform: uppercase !important;
+}
+
+.navbar-toggler {
+  border: none !important;
+}
+
+.nav-link {
+  font-weight: 500 !important;
+  color: #000000 !important;
+}
+
+.nav-link:hover {
+  color: lightgreen !important;
+}
+
+.navbar-nav > .nav-item > .nav-link.active {
+  color: lightgreen !important;
+  font-weight: bold !important;
+}
+
+.navbar-nav > .nav-item > .nav-link.active:hover {
+  color: lightgreen !important;
+}
+
+.navbar-nav > .nav-item > .nav-link:focus,
+.navbar-nav > .nav-item > .nav-link:hover {
+  color: lightgreen !important;
+}
+
+.navbar-nav > .nav-item > .nav-link.disabled {
+  color: #6c757d !important;
+  pointer-events: none !important;
+}
+
+.navbar-nav > .nav-item > .nav-link.disabled:hover {
+  color: #6c757d !important;
+  cursor: default !important;
+}
+
+.navbar-nav > .nav-item > .nav-link:not(.disabled) {
+  cursor: pointer !important;
+}
+
+.navbar-nav > .nav-item > .nav-link:not(.disabled):hover {
+  color: lightgreen !important;
+}
+
     </style>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-gradient fixed-top shadow border-bottom">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light bg-gradient fixed-top shadow border-bottom">
         <div class="container">
             <!-- Navbar brand -->
             <a class="navbar-brand" target="_blank" href="./">
                 {% comment %} <img src="{{ MEDIA_URL }}/default/logo.png" height="16" alt="{{ MEDIA_URL }}" loading="lazy" class="bg-white bg-gradient px-1 py-1" style="margin-top: -3px;" /> {% endcomment %}
-                <b>{{system_name}}</b>
+                <!-- <b>{{system_name}}</b> -->
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarExample01" aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>

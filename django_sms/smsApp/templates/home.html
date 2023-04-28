@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% load humanize %} {% load customfilter %} {% block pageContent %}
 <style>
+<<<<<<< HEAD
 
 center{
 
@@ -135,10 +136,15 @@ background-color: #000 !important;
 margin-right: 20px !important;
 vertical-align: middle !important;
 } */
+=======
+    .white-text {
+        color: white;
+    }
+>>>>>>> d7ead892ed03c5a3f7ad5a561e131b277424428f
 </style>
 <!--Section: Content-->
 <section class="">
-    <h2 class="fw-bolder">Welcome {{request.user.first_name}}&nbsp;{{request.user.last_name}}!</h2>
+    <h2 class="fw-bolder white-text">Welcome {{request.user.first_name}}&nbsp;{{request.user.last_name}}!</h2>
     <hr>
     <div class="row justify-content-center">
         <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 px-1 pb-2">

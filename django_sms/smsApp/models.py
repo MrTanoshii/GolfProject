@@ -12,6 +12,10 @@ from django.contrib.auth.base_user import BaseUserManager
 
 
 # Create your models here.
+class File(models.Model):
+    file = models.FileField(upload_to="files")
+    
+    
 class Groups(models.Model):
     name = models.CharField(max_length=250)
     description = models.TextField(blank=True, null= True)

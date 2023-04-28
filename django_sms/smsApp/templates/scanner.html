@@ -47,5 +47,9 @@
     <div class="ui container">
         <h1>{{name}} - {{obj.name}}</h1>
         <img src="{{obj.qr_code.url}}">
+        
+        {% if user.is_authenticated %}
+            <a href="{% url 'generate_qr_code' %}">Generate QR code</a>
+        {% endif %}
     </div>
 </body>

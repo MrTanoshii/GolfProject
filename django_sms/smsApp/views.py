@@ -8,6 +8,8 @@ from smsApp import models, forms
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+import pandas as pd
+from smsApp.models import Members
 
 
 
@@ -368,7 +370,7 @@ def view_card(request, pk=None):
         return HttpResponse("Member ID is Invalid")
     else:
         context = context_data()
-        context['member'] = models.Member.objects.get(id=pk)
+        context['member'] = models.Members.objects.get(id=pk)
         return render(request, 'view_id.html', context)
 
 @login_required
@@ -384,7 +386,7 @@ def view_details(request, code=None):
         return HttpResponse("Member code is Invalid")
     else:
         context = context_data()
-        context['member'] = models.Member.objects.get(member_code=code)
+        context['member'] = models.Members.objects.get(member_code=code)
         return render(request, 'view_member.html', context)
 
 
@@ -404,3 +406,27 @@ def per_group(request):
             print(err)
     return render(request, 'per_group.html', context)
 
+
+
+
+def create_db(file_path):
+    df = pd.read_csv(file_path, delimiter=',')
+    list_of_csv = [list(row) for row in df.values]
+    
+    for row in list_of_csv:
+        Members.objects.create(
+            first_name=row[1],
+            middle_name=row[2],
+            last_name=row[3],
+            gender=row[4],
+            contact=row[5],
+            email=row[6],
+            address=row[7],
+        )
+
+def main(request):
+    
+    if request.method =="POST":
+        file = request.FILES['file']
+        file.objects.create(file = file)
+    return render(request, 'main.html')

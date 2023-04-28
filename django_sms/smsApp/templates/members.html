@@ -1,7 +1,60 @@
 {% extends 'base.html' %} {% load static %} {% block pageContent %}
+<style>
+    form {
+        margin: 0 auto;
+        width: 50%;
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        color:blue;
+        ;
+    }
+
+    .ok{
+        color:white;
+    }
+    input[type="file"] {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 16px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    button[type="submit"] {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 12px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 10px 0;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    button[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+
+
+
 <section class="py-4">
     <div class="container">
-        <h3 class="fw-bolder text-center">List of Members</h3>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="file" class="ok">Upload a CSV file:</label>
+            <input type="file" name="file" id="file"><br><br>
+            <button type="submit">Submit</button>
+        </form>
+        {% comment %} <h3 class="fw-bolder text-center">List of Members</h3> {% endcomment %}
         <center>
             <hr class="bg-primary opacity-100" style="height:3px" width="5%">
         </center>

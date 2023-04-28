@@ -289,12 +289,30 @@ def delete_group(request, pk = None):
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
 @login_required
+# def members(request):
+#     context = context_data(request)
+#     context['page'] = 'Members'
+#     context['page_title'] = "Member List"
+#     context['members'] = models.Members.objects.filter(delete_flag = 0).all()
+#     return render(request, 'members.html', context)
+
+@login_required
 def members(request):
     context = context_data(request)
     context['page'] = 'Members'
     context['page_title'] = "Member List"
-    context['members'] = models.Members.objects.filter(delete_flag = 0).all()
+    context['members'] = models.Members.objects.filter(delete_flag=0).all()
+
+    if request.method == 'POST':
+        file = request.FILES.get('file')
+        if file:
+           
+            create_db(file)
+            # Redirect back to members page after processing the file
+            return redirect('member-page')
+
     return render(request, 'members.html', context)
+
 
 @login_required
 def save_member(request):
@@ -407,22 +425,30 @@ def per_group(request):
     return render(request, 'per_group.html', context)
 
 
-
+from .models import Groups
 
 def create_db(file_path):
-    df = pd.read_csv(file_path, delimiter=',')
+    print("hello")
+    df = pd.read_csv(file_path, delimiter=',', header=None)
+    print(df)
     list_of_csv = [list(row) for row in df.values]
-    
+    print(list_of_csv)
     for row in list_of_csv:
-        Members.objects.create(
-            first_name=row[1],
-            middle_name=row[2],
-            last_name=row[3],
-            gender=row[4],
-            contact=row[5],
-            email=row[6],
-            address=row[7],
+        print(row)
+        test = Members.objects.create(
+            code = "213",
+            group = Groups.objects.get(pk=1),
+            first_name=row[0],
+            middle_name=row[1],
+            last_name=row[2],
+            gender=row[3],
+            contact=row[4],
+            email=row[5],
+            address=row[6],
+            image_path="C:/Users/tgunn/OneDrive/Documents/golf/GolfProject/django_sms/media/qr_codes/qr_code-QR_Code.png",
+
         )
+        test.save()
 
 def main(request):
     

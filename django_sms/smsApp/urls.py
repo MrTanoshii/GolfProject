@@ -6,15 +6,28 @@ from django.views.generic.base import RedirectView
 from homepage.views import HomePageView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.utils.crypto import get_random_string
+
+# Generate a random string of 20 characters
+random_str = get_random_string(length=20)
+
+# Append the random string to the login URL
+from django.conf import settings
+
+
+
+
 
 urlpatterns = [
     # path('',views.home, name="home-page"),
     path('',HomePageView.as_view(), name="home-page"),
-    path('login',views.login_page,name='login-page'),
-    path('register',views.userregister,name='register-page'),
+    # path('login',views.login_page,name='login-page'),
+    path('login/' + random_str + '/', views.login_page, name='login-page'),
+    # path('login/' + settings.LOGIN_URL_RANDOM_STRING + '/', views.login_page, name='login-page'),
+    path('register/',views.userregister,name='register-page'),
     path('save_register',views.save_register,name='register-user'),
     path('user_login',views.login_user,name='login-user'),
-    path('home',views.home,name='home-page'),
+    path('home/'+ random_str + '/',views.home,name='home-page'),
     path('logout',views.logout_user,name='logout'),
     path('profile',views.profile,name='profile-page'),
     path('update_password',views.update_password,name='update-password'),

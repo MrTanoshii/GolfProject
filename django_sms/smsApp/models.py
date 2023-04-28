@@ -40,7 +40,7 @@ class Members(models.Model):
     contact = models.CharField(max_length=250)
     email = models.CharField(max_length=250)
     address = models.TextField(blank=True, null= True)
-    image_path = models.ImageField(upload_to="members/")
+    image_path = models.ImageField(upload_to="members/", blank= True, null=True)
     status = models.CharField(max_length=2, choices=(('1','Active'), ('2','Inactive')), default = 1)
     delete_flag = models.IntegerField(default = 0)
     date_added = models.DateTimeField(default = timezone.now)
@@ -55,8 +55,8 @@ class Members(models.Model):
     def name(self):
         return str(f"{self.first_name}{' '+self.middle_name if not self.middle_name == None else ''} {self.last_name}")
 
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super().save(* args, **kwargs)
         img = Image.open(self.image_path.path) 
         if img.height > 300 or img.width > 300:
             new_img = (300, 300)

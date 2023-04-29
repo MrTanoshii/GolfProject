@@ -455,4 +455,4 @@ def main(request):
     if request.method =="POST":
         file = request.FILES['file']
         file.objects.create(file = file)
-    return render(request, 'main.html')
+    return render(request, 'members.html')

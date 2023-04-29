@@ -427,8 +427,6 @@ def per_group(request):
 
 from .models import Groups
 
-import random
-
 def create_db(file_path):
     print("hello")
     df = pd.read_csv(file_path, delimiter=',', header=None)
@@ -437,7 +435,6 @@ def create_db(file_path):
     print(list_of_csv)
     for row in list_of_csv:
         print(row)
-<<<<<<< HEAD
         test = Members.objects.create(
             code = "213",
             group = Groups.objects.get(pk=1),
@@ -449,33 +446,13 @@ def create_db(file_path):
             email=row[5],
             address=row[6],
             image_path="default.png",
-=======
->>>>>>> 6c77b7e4653f1ff73a77262c12c6fac14bbf50f4
 
-        # Check if a member with the same name and contact already exists in the database
-        if not Members.objects.filter(first_name=row[0], last_name=row[2], contact=row[4]).exists():
-            code = ''.join(random.choices('0123456789', k=9))
-            test = Members.objects.create(
-                code = code,
-                group = Groups.objects.get(pk=1),
-                first_name=row[0],
-                middle_name=row[1],
-                last_name=row[2],
-                gender=row[3],
-                contact=row[4],
-                email=row[5],
-                address=row[6],
-                image_path="C:/Users/tgunn/OneDrive/Documents/golf/GolfProject/django_sms/media/qr_codes/qr_code-QR_Code.png",
-            )
-            test.save()
+        )
+        test.save()
 
 def main(request):
     
     if request.method =="POST":
         file = request.FILES['file']
         file.objects.create(file = file)
-<<<<<<< HEAD
     return render(request, 'main.html')
-=======
-    return render(request, 'members.html')
->>>>>>> 52ab16bd34ff39c543e170f0179180c5d5b318fa

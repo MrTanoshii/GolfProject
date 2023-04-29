@@ -23,5 +23,4 @@ urlpatterns = [
     path('', include('homepage.urls')),
     path('', include('scanner.urls')),
     
-
 ]

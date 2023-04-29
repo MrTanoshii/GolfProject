@@ -445,7 +445,7 @@ def create_db(file_path):
             contact=row[4],
             email=row[5],
             address=row[6],
-            image_path="C:/Users/tgunn/OneDrive/Documents/golf/GolfProject/django_sms/media/qr_codes/qr_code-QR_Code.png",
+            image_path="default.png",
 
         )
         test.save()

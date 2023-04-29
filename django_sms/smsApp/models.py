@@ -40,7 +40,7 @@ class Members(models.Model):
     contact = models.CharField(max_length=250)
     email = models.CharField(max_length=250)
     address = models.TextField(blank=True, null= True)
-    image_path = models.ImageField(upload_to="members/", blank= True, null=True)
+    image_path = models.ImageField(upload_to="",blank=True, null=True, default=0)
     status = models.CharField(max_length=2, choices=(('1','Active'), ('2','Inactive')), default = 1)
     delete_flag = models.IntegerField(default = 0)
     date_added = models.DateTimeField(default = timezone.now)
@@ -57,8 +57,12 @@ class Members(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(* args, **kwargs)
-        img = Image.open(self.image_path.path) 
-        if img.height > 300 or img.width > 300:
-            new_img = (300, 300)
-            img.thumbnail(new_img)
-            img.save(self.image_path.path)  
+        # image_path should show default image if no image is uploaded
+        try:
+            img = Image.open(self.image_path.path) 
+            if img.height > 300 or img.width > 300:
+                new_img = (300, 300)
+                img.thumbnail(new_img)
+                img.save(self.image_path.path)
+        except:
+            self.image_path = "../avatar.png"

@@ -1,5 +1,5 @@
 import datetime
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 import json
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -12,7 +12,12 @@ import pandas as pd
 from smsApp.models import Members
 
 
+<<<<<<< HEAD
 # function is used to obtain some context data for a web page, such as the base URL of the web application and some default values for various variables that control the rendering of the page.
+=======
+
+
+>>>>>>> 7f0ef8b51bb7ee85f28e14b7883b3c5aac5ebf68
 def context_data(request):
     fullpath = request.get_full_path()
     abs_uri = request.build_absolute_uri()
@@ -430,6 +435,12 @@ def per_group(request):
 
 from .models import Groups
 
+import random
+
+def generate_code():
+    code = ''.join(str(random.randint(0, 9)) for _ in range(9))
+    return code
+
 def create_db(file_path):
     print("hello")
     df = pd.read_csv(file_path, delimiter=',', header=None)
@@ -439,7 +450,7 @@ def create_db(file_path):
     for row in list_of_csv:
         print(row)
         test = Members.objects.create(
-            code = "213",
+            code = generate_code(),
             group = Groups.objects.get(pk=1),
             first_name=row[0],
             middle_name=row[1],
@@ -459,3 +470,9 @@ def main(request):
         file = request.FILES['file']
         file.objects.create(file = file)
     return render(request, 'main.html')
+
+def member_detail(request, pk):
+    member = get_object_or_404(members)
+    context = {'member': member}
+    return render(request, 'member_detail.html', context)
+

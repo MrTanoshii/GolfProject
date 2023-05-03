@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% load static %} {% block pageContent %}
+{% extends 'base.html' %} 
+{% load static %} 
+{% block pageContent %}
 <style>
     form {
         margin: 0 auto;
@@ -121,15 +123,31 @@
                                 </td>
                                 <td class="text-center">
                                     <div class="dropdown">
-                                        <button class="btn btn-light btn-sm rounded-0 border dropdown-toggle" type="button" id="abtn{{member.pk}}" data-bs-toggle="dropdown" aria-expanded="false">
-                                          Action
+                                        <button class="btn btn-light btn-sm rounded-0 border dropdown-toggle" type="button" id="abtn{{member.pk}}"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            Action
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="abtn{{member.pk}}">
-                                            <li><a class="dropdown-item view-data" href="javascript:void(0)" data-url="{% url 'view-member-pk' member.pk %}"><i class="fa fa-eye text-dark"></i> View</a></li>
-                                            <li><a class="dropdown-item edit-data" href="javascript:void(0)" data-url="{% url 'manage-member-pk' member.pk %}"><i class="fa fa-edit text-primary"></i> Edit</a></li>
-                                            <li><a class="dropdown-item delete-data" href="javascript:void(0)" data-url="{% url 'delete-member' member.pk %}"><i class="fa fa-trash text-danger"></i> Delete</a></li>
+                                            <li>
+                                                <a class="dropdown-item view-data" href="{% url 'view-member-pk' member.pk %}" target="_blank" id="view-button">
+                                                    <i class="fa fa-eye text-dark"></i> View
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item edit-data" href="javascript:void(0)"
+                                                    data-url="{% url 'manage-member-pk' member.pk %}">
+                                                    <i class="fa fa-edit text-primary"></i> Edit
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item delete-data" href="javascript:void(0)"
+                                                    data-url="{% url 'delete-member' member.pk %}">
+                                                    <i class="fa fa-trash text-danger"></i> Delete
+                                                </a>
+                                            </li>
                                         </ul>
                                     </div>
+
                                 </td>
                             </tr>
                             {% endfor %}
@@ -140,7 +158,8 @@
         </div>
     </div>
 </section>
-{% endblock pageContent %} {% block ScriptBlock %}
+{% endblock pageContent %} 
+{% block ScriptBlock %}
 <script>
     $(function() {
         $('#create_new').click(function() {
@@ -149,9 +168,9 @@
         $('.edit-data').click(function() {
             uni_modal("<i class='fa fa-edit'></i> Edit Member Details", $(this).attr('data-url'),"modal-lg")
         })
-        $('.view-data').click(function() {
-            uni_modal("<i class='fa fa-th-list'></i> Member Details", $(this).attr('data-url'))
-        })
+        // $('.view-data').click(function() {
+        //     uni_modal("<i class='fa fa-th-list'></i> Member Details", $(this).attr('data-url'))
+        // })
         $('.view_image').click(function() {
             var img = $(this).attr('data-img-url')
             $('#viewer_modal #img-viewer-field').attr('src', img)
@@ -171,6 +190,13 @@
                 [25, 50, 100, "All"]
             ]
         })
+
+        // var viewButton = document.getElementById("view-button");
+        // viewButton.addEventListener("click", function(event) {
+        //     event.preventDefault();
+        //     var url = viewButton.getAttribute("href");
+        //     window.location.href = url;
+        // });
     })
 
     function delete_member(url) {
@@ -210,4 +236,6 @@
         })
     }
 </script>
+
+
 {% endblock ScriptBlock %}

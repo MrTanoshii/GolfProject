@@ -1,5 +1,5 @@
 import datetime
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 import json
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -458,4 +458,15 @@ def main(request):
         file.objects.create(file = file)
     return render(request, 'main.html')
 
+def member_detail(request, pk):
+    member = get_object_or_404(members)
+    context = {'member': member}
+    return render(request, 'member_detail.html', context)
+# from django.urls import reverse
+# from django.shortcuts import render, get_object_or_404
+# from smsApp.models import Members
 
+# def member_detail(request):
+#     member = get_object_or_404(Members, pk=1)
+#     url = reverse('member_detail', kwargs={'pk': member.pk})
+    # ...

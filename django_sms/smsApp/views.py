@@ -12,7 +12,7 @@ import pandas as pd
 from smsApp.models import Members
 
 
-
+# function is used to obtain some context data for a web page, such as the base URL of the web application and some default values for various variables that control the rendering of the page.
 def context_data(request):
     fullpath = request.get_full_path()
     abs_uri = request.build_absolute_uri()
@@ -27,7 +27,8 @@ def context_data(request):
     }
 
     return context
-    
+ 
+#  This function handles the user registration page request by rendering the registration form to the user.   
 def userregister(request):
     context = context_data(request)
     context['topbar'] = False
@@ -56,6 +57,8 @@ def save_register(request):
             
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
+
+# This function handles the user profile update request by rendering the profile update form to the user and processing the form submission.
 @login_required
 def update_profile(request):
     context = context_data(request)

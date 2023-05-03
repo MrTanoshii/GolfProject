@@ -1,108 +1,72 @@
  {% load static %} {% load humanize %}
 <style>
 /* CSS for the form */
-form {
-  margin: 0 auto!important;
-  width: 50%!important;
+/* Style for the container */
+/* Center the container */
+#e-details {
+  margin: auto;
+  max-width: 600px;
+  background-color: #f7f7f7;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-label {
-  display: block!important;
-  margin-bottom: 10px!important;
-  font-size: 18px!important;
-  font-weight: bold!important;
-  color: #444!important;
+/* Style for the member image */
+#member-img {
+  display: block;
+  margin: auto;
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-input[type="file"] {
-  display: block!important;
-  margin-bottom: 10px!important;
-  font-size: 16px!important;
-  padding: 5px!important;
-  border: 1px solid #ccc!important;
-  border-radius: 4px!important;
-  width: 100%!important;
-  box-sizing: border-box!important;
+/* Style for the definition list */
+dl {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 20px;
 }
 
-button[type="submit"] {
-  background-color: #ff6b6b!important;
-  border: none!important;
-  color: white!important;
-  padding: 12px 20px!important;
-  text-align: center!important;
-  text-decoration: none!important;
-  display: inline-block!important;
-  font-size: 16px!important;
-  margin: 10px 0!important;
-  cursor: pointer!important;
-  border-radius: 4px!important;
-  transition: background-color 0.3s ease!important;
+/* Style for the term (dt) */
+dt {
+  font-weight: bold;
 }
 
-button[type="submit"]:hover {
-  background-color: #ff5252!important;
+/* Style for the description (dd) */
+dd {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-/* CSS for the table */
-.card {
-  background-color: #f1f1f1 !important;
-  border-radius: 30px !important;
-  margin-top: 30px!important;
+/* Style for the link */
+a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
-.card-body {
-  font-size: 17px!important;
+/* Hover style for the link */
+a:hover {
+  background-color: #2e8540;
 }
 
-.text-center {
-  font-size: 30px!important;
-  font-weight: bold!important;
-  color: #444!important;
-  margin-bottom: 30px!important;
-}
 
-table {
-  width: 100%!important;
-  border-collapse: collapse!important;
-  overflow-x: auto!important;
-  white-space: nowrap!important;
-}
-
-thead {
-  background-color: #ff6b6b!important;
-  color: white!important;
-}
-
-th,
-td {
-  text-align: center!important;
-  padding: 10px!important;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2!important;
-}
-
-.member-actions {
-  display: flex!important;
-  justify-content: center!important;
-  align-items: center!important;
-}
-
-.member-actions .btn {
-  margin-right: 10px!important;
-  transition: background-color 0.3s ease!important;
-}
-
-.member-actions .btn:hover {
-  background-color: #ff5252!important;
-  color: white!important;
-}
 </style>
 <div class="container-fluid" id="e-details">
     <center>
-        <img src="{% if member.image_path %}{{member.image_path.url}}{% else %}{% static 'assets/default/img/logo.jpg' %}{% endif %}" alt="" class="img-thumbnail bg-gradient bg-dark" id="member-img">
+        <img src="{% if member.image_path %}{{member.image_path.url}}{% else %}{% static 'assets/default/img/logo.jpg' %}{% endif %}"
+            alt="" class="img-thumbnail bg-gradient bg-dark" id="member-img">
     </center>
     <div class="lh-1">
         <dl>
@@ -120,7 +84,9 @@ tr:nth-child(even) {
             <dd class="ps-4">{{member.address}}</dd>
             <dt>Date and Time Added</dt>
             <dd class="ps-4">{{member.date_added|date:"F d, Y h:i A"}}</dd>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=google.com">
         </dl>
+        <a
+            href="scanner.html?group={{member.group}}&name={{member.name}}&gender={{member.gender}}&contact={{member.contact}}&email={{member.email}}&address={{member.address}}">Generate
+            QR Code</a>
     </div>
 </div>

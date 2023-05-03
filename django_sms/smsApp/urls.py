@@ -8,6 +8,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.utils.crypto import get_random_string
 
+
 # Generate a random string of 20 characters
 random_str = get_random_string(length=20)
 
@@ -51,7 +52,7 @@ urlpatterns = [
    
     path('view_member'+ random_str + '/',views.view_details,name='scanned-code'),
     path('scanner',views.view_scanner,name='scanner'),
-    
+   
 
     
 ]

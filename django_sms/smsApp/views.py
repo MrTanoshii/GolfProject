@@ -13,6 +13,7 @@ from smsApp.models import Members
 
 
 
+
 def context_data(request):
     fullpath = request.get_full_path()
     abs_uri = request.build_absolute_uri()
@@ -456,3 +457,5 @@ def main(request):
         file = request.FILES['file']
         file.objects.create(file = file)
     return render(request, 'main.html')
+
+

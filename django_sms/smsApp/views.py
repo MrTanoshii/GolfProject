@@ -475,9 +475,24 @@ def member_detail(request, pk):
     member = get_object_or_404(members)
     context = {'member': member}
     return render(request, 'member_detail.html', context)
- 
-def handler404(request, exception):
-    return render(request, '404.html', status=404)
+def error_404(request, exception):
+    return render(request,'404.html')
+def error_500(request):
+    return render(request,'404.html')
+def error_403(request, exception):
+    data = {}
+    return render(request,'404.html', data)
+def error_400(request, exception):
+    return render(request,'404.html')
+def error_405(request, exception):
+    data = {}
+    return render(request,'404.html', data)
+def error_410(request, exception):
+    data = {}
+    return render(request,'404.html', data)
+def error_415(request, exception):
+    data = {}
+    return render(request,'404.html', data)
 
 def handler403(request, exception):
     return render(request, '403.html', status=403)

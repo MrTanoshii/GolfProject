@@ -1,8 +1,30 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Page Not Found{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
 
-{% block content %}
-  <h1>Page Not Found</h1>
-  <p>The requested URL {{ request.path }} was not found on this server.</p>
-{% endblock %}
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 20vh;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Error</h1>
+
+</body>
+
+</html>

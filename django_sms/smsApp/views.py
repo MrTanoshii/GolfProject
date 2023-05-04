@@ -14,10 +14,7 @@ from smsApp.models import Members
 
 
 # function is used to obtain some context data for a web page, such as the base URL of the web application and some default values for various variables that control the rendering of the page.
-<<<<<<< HEAD
-=======
 
->>>>>>> a61cbc3df3b7c2f89a272327ad707e6c3ca857da
 def context_data(request):
     fullpath = request.get_full_path()
     abs_uri = request.build_absolute_uri()
@@ -478,4 +475,22 @@ def member_detail(request, pk):
     member = get_object_or_404(members)
     context = {'member': member}
     return render(request, 'member_detail.html', context)
+def error_404(request, exception):
+    return render(request,'404.html')
+def error_500(request):
+    return render(request,'404.html')
+def error_403(request, exception):
+    data = {}
+    return render(request,'404.html', data)
+def error_400(request, exception):
+    return render(request,'404.html')
+def error_405(request, exception):
+    data = {}
+    return render(request,'404.html', data)
+def error_410(request, exception):
+    data = {}
+    return render(request,'404.html', data)
+def error_415(request, exception):
+    data = {}
+    return render(request,'404.html', data)
 

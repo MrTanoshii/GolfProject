@@ -24,3 +24,8 @@ urlpatterns = [
     path('', include('scanner.urls')),
     
 ]
+hander404 = 'smsApp.views.error_404_view'
+hander500 = 'smsApp.views.error_500_view'
+hander403 = 'smsApp.views.error_403_view'
+hander400 = 'smsApp.views.error_400_view'
+

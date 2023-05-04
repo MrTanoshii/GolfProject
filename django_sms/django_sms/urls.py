@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+handler404 = 'smsApp.views.handler404'
+handler403 = 'smsApp.views.handler403'
 
 urlpatterns = [
     path('admin/', admin.site.urls),

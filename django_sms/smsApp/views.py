@@ -12,12 +12,9 @@ import pandas as pd
 from smsApp.models import Members
 
 
-<<<<<<< HEAD
+
 # function is used to obtain some context data for a web page, such as the base URL of the web application and some default values for various variables that control the rendering of the page.
-=======
 
-
->>>>>>> 7f0ef8b51bb7ee85f28e14b7883b3c5aac5ebf68
 def context_data(request):
     fullpath = request.get_full_path()
     abs_uri = request.build_absolute_uri()

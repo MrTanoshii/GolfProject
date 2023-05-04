@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'smsApp.apps.smsAppConfig',
     "homepage.apps.HomepageConfig",
     "scanner.apps.ScannerConfig",
-    "qr_code"
+    # "qr_code",
     
 ]
 

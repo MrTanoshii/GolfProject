@@ -14,6 +14,10 @@ from smsApp.models import Members
 
 
 # function is used to obtain some context data for a web page, such as the base URL of the web application and some default values for various variables that control the rendering of the page.
+<<<<<<< HEAD
+=======
+
+>>>>>>> a61cbc3df3b7c2f89a272327ad707e6c3ca857da
 def context_data(request):
     fullpath = request.get_full_path()
     abs_uri = request.build_absolute_uri()
@@ -399,6 +403,9 @@ def view_card(request, pk=None):
 def view_scanner(request):
     context = context_data(request)  # Pass request object to context_data function
     return render(request, 'scanner.html', context)
+
+def scanner_view(request):
+    return render(request, 'scanner.html')
 
 
 

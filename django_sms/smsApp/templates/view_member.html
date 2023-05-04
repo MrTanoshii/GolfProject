@@ -85,8 +85,7 @@ a:hover {
             <dt>Date and Time Added</dt>
             <dd class="ps-4">{{member.date_added|date:"F d, Y h:i A"}}</dd>
         </dl>
-        <a
-            href="scanner.html?group={{member.group}}&name={{member.name}}&gender={{member.gender}}&contact={{member.contact}}&email={{member.email}}&address={{member.address}}">Generate
-            QR Code</a>
+        <a href="{% url 'scanner-view' %}?group={{member.group}}&name={{member.name}}&gender={{member.gender}}&contact={{member.contact}}&email={{member.email}}&address={{member.address}}">Generate QR Code</a>
+
     </div>
 </div>

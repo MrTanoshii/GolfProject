@@ -129,7 +129,7 @@
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="abtn{{member.pk}}">
                                             <li>
-                                                <a class="dropdown-item view-data" href="{% url 'view-member-pk' member.pk %}" target="_blank" id="view-button">
+                                                <a class="dropdown-item view-data" href="{% url 'view-member' member.id  %}" target="_blank" id="view-button">
                                                     <i class="fa fa-eye text-dark"></i> View
                                                 </a>
                                             </li>

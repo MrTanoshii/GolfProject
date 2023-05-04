@@ -401,6 +401,9 @@ def view_scanner(request):
     context = context_data(request)  # Pass request object to context_data function
     return render(request, 'scanner.html', context)
 
+def scanner_view(request):
+    return render(request, 'scanner.html')
+
 
 
 @login_required

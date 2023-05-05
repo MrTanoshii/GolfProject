@@ -22,9 +22,9 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('smsApp.urls')),
-    path('', include('homepage.urls')),
-    path('', include('scanner.urls')),
+    path('smsApp/', include('smsApp.urls')),
+    path('homepage/', include('homepage.urls')),
+    path('scanner/', include('scanner.urls')),
     
 ]
 hander404 = 'smsApp.views.error_404_view'

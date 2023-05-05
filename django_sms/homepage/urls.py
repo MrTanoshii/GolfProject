@@ -12,5 +12,6 @@ urlpatterns = [
     
     path('signup',views.signup,name='signup'),
     path('login/', LoginView.as_view(), name='login'),
+    path('',HomePageView.as_view(), name="home-page"),
    ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

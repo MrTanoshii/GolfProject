@@ -24,10 +24,6 @@ from django.conf import settings
 
 urlpatterns = [
    
-<<<<<<< HEAD
-
-=======
->>>>>>> 00e0fea2de04c0b23ec3477cc5a8c1e48a8658c8
     path('login/' + random_str + '/', views.login_page, name='login-page'),
     path('register/',views.userregister,name='register-page'),
     path('save_register',views.save_register,name='register-user'),

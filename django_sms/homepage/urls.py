@@ -9,7 +9,7 @@ from .views import LoginView
 
 
 urlpatterns = [
-    path('', HomePageView.as_view(), name='home'),
+    
     path('signup',views.signup,name='signup'),
     path('login/', LoginView.as_view(), name='login'),
    ]

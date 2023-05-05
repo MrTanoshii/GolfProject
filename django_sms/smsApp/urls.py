@@ -3,7 +3,6 @@ from django.urls import path,include
 from . import views
 from django.contrib.auth import views as auth_views
 from django.views.generic.base import RedirectView
-
 from django.conf import settings
 from django.conf.urls.static import static
 from django.utils.crypto import get_random_string
@@ -25,7 +24,10 @@ from django.conf import settings
 
 urlpatterns = [
    
+<<<<<<< HEAD
 
+=======
+>>>>>>> 00e0fea2de04c0b23ec3477cc5a8c1e48a8658c8
     path('login/' + random_str + '/', views.login_page, name='login-page'),
     path('register/',views.userregister,name='register-page'),
     path('save_register',views.save_register,name='register-user'),

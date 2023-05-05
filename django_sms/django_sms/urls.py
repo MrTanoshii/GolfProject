@@ -26,7 +26,7 @@ urlpatterns = [
     path('smsApp/', include('smsApp.urls')),
     path('homepage/', include('homepage.urls')),
     path('scanner/', include('scanner.urls')),
-    path('',HomePageView.as_view(), name="home-page"),
+    
     
 ]
 # hander404 = 'smsApp.views.error_404_view'

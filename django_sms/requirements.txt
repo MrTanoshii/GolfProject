@@ -4,3 +4,5 @@ whitenoise
 pillow
 qrcode
 django-qr-code
+numpy
+pandas

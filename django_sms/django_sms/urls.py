@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from homepage.views import HomePageView
 from django.urls import path,include
 
 
@@ -25,6 +26,7 @@ urlpatterns = [
     path('smsApp/', include('smsApp.urls')),
     path('homepage/', include('homepage.urls')),
     path('scanner/', include('scanner.urls')),
+    path('',HomePageView.as_view(), name="home-page"),
     
 ]
 hander404 = 'smsApp.views.error_404_view'

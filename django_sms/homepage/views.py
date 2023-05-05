@@ -30,7 +30,7 @@ def signup(request):
 class LoginView(FormView):
     form_class = LoginForm
     template_name = 'login.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('home/')
 
     def form_valid(self, form):
         user = authenticate(

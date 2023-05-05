@@ -25,7 +25,7 @@ from django.conf import settings
 
 urlpatterns = [
 
-    path('',HomePageView.as_view(), name="home-page"),
+    path('',HomePageView.as_view(), name="page"),
     path('login/' + random_str + '/', views.login_page, name='login-page'),
     path('register/',views.userregister,name='register-page'),
     path('save_register',views.save_register,name='register-user'),

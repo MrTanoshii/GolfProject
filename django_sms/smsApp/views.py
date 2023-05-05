@@ -37,7 +37,7 @@ def userregister(request):
     context['footer'] = False
     context['page_title'] = "User Registration"
     if request.user.is_authenticated:
-        return redirect("home-page")
+        return redirect("page")
     return render(request, 'register.html', context)
 
 def save_register(request):

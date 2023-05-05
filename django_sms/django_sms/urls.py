@@ -23,9 +23,9 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('smsApp/', include('smsApp.urls')),
-    path('homepage/', include('homepage.urls')),
-    path('scanner/', include('scanner.urls')),
+    path('', include('smsApp.urls')),
+    path('', include('homepage.urls')),
+    path('', include('scanner.urls')),
     
     
 ]

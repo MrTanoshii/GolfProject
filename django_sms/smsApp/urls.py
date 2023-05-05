@@ -7,6 +7,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.utils.crypto import get_random_string
 from smsApp.views import member_detail
+from homepage.views import HomePageView
 from .views import scanner_view
 
 
@@ -23,12 +24,13 @@ from django.conf import settings
 
 
 urlpatterns = [
-   
+
+    path('',HomePageView.as_view(), name="home-page"),
     path('login/' + random_str + '/', views.login_page, name='login-page'),
     path('register/',views.userregister,name='register-page'),
     path('save_register',views.save_register,name='register-user'),
     path('user_login',views.login_user,name='login-user'),
-    path('home/',views.home,name='home_page'),
+    path('home/',views.home,name='home-page'),
     path('logout',views.logout_user,name='logout'),
     path('profile',views.profile,name='profile-page'),
     path('update_password',views.update_password,name='update-password'),

@@ -11,6 +11,8 @@ from smsApp.views import member_detail
 from .views import scanner_view
 
 
+
+
 # Generate a random string of 20 characters
 random_str = get_random_string(length=20)
 
@@ -58,11 +60,13 @@ urlpatterns = [
     # path('view_member'+ random_str + '/',views.view_details,name='scanned-code'),
     path('scanner',views.view_scanner,name='scanner'),
     path('scanner_view/', views.scanner_view, name='scanner-view'),
+    
    
    
 
     
 ]
+
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

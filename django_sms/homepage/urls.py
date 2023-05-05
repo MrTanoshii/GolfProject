@@ -9,8 +9,8 @@ from .views import LoginView
 
 
 urlpatterns = [
-    path('', HomePageView.as_view(), name='home'),
+   
     path('signup',views.signup,name='signup'),
-    path('login/', LoginView.as_view(), name='login'),
+    path('', LoginView.as_view(), name='login'),
    ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

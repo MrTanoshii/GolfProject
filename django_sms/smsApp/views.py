@@ -475,6 +475,8 @@ def member_detail(request, pk):
     member = get_object_or_404(members)
     context = {'member': member}
     return render(request, 'member_detail.html', context)
+
+
 def error_404(request, exception):
     return render(request,'404.html')
 def error_500(request):

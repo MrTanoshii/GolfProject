@@ -9,10 +9,7 @@ from django.conf.urls.static import static
 from django.utils.crypto import get_random_string
 from smsApp.views import member_detail
 from .views import scanner_view
-from django.views.defaults import page_not_found, permission_denied
-from smsApp.views import handler404
-from smsApp.views import handler403
-from django.views.generic import TemplateView
+
 
 
 
@@ -63,13 +60,13 @@ urlpatterns = [
     # path('view_member'+ random_str + '/',views.view_details,name='scanned-code'),
     path('scanner',views.view_scanner,name='scanner'),
     path('scanner_view/', views.scanner_view, name='scanner-view'),
-    path('404/', TemplateView.as_view(template_name='404.html'), name='error-404'),
-    path('403/', TemplateView.as_view(template_name='403.html'), name='error-403'),
+    
    
    
 
     
 ]
+
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

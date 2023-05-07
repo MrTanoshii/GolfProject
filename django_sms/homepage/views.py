@@ -11,8 +11,7 @@ from .forms import LoginForm
 
 # Create your views here.
 class HomePageView(TemplateView):
-    template_name = 'homepage\homepage.html'
-
+    template_name = "homepage/homepage.html"
 
 
 def signup(request):

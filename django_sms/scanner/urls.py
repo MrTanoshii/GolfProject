@@ -5,10 +5,10 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-
+app_name = "scanner"
 urlpatterns = [
-    path('scanner/', ScannerView, name='scanner'),
-    path('qr-code/', views.generate_qr_code, name='generate_qr_code'),
+    path("scanner/", ScannerView, name="scanner"),
+    path("qr-code/", views.generate_qr_code, name="generate_qr_code"),
     # other URL patterns...
 ]
 

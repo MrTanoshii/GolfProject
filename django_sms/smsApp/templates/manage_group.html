@@ -4,11 +4,13 @@
         <input type="hidden" name="id" value="{{group.id}}">
         <div class="mb-3">
             <label for="name" class="control-label">Name</label>
-            <input type="text" id="name" name="name" class="form-control form-control-sm rounded-0" value="{{group.name}}" required>
+            <input type="text" id="name" name="name" class="form-control form-control-sm rounded-0"
+                value="{{group.name}}" required>
         </div>
         <div class="mb-3">
             <label for="description" class="control-label">Description</label>
-            <textarea rows="3" id="description" name="description" class="form-control form-control-sm rounded-0" required>{{group.description}}</textarea>
+            <textarea rows="3" id="description" name="description" class="form-control form-control-sm rounded-0"
+                required>{{group.description}}</textarea>
         </div>
         <div class="mb-3">
             <label for="status" class="control-label">Status</label>
@@ -28,8 +30,8 @@
     </form>
 </div>
 <script>
-    $(function() {
-        $('#group-form').submit(function(e) {
+    $(function () {
+        $('#group-form').submit(function (e) {
             e.preventDefault();
             var _this = $(this)
             $('.err-msg').remove();
@@ -45,7 +47,7 @@
                 headers: {
                     "X-CSRFToken": '{{csrf_token}}'
                 },
-                url: "{% url 'save-group' %}",
+                url: "{% url 'smsApp:save-group' %}",
                 data: new FormData($(this)[0]),
                 cache: false,
                 contentType: false,
@@ -58,7 +60,7 @@
                     alert("An error occured", 'error');
                     end_loader();
                 },
-                success: function(resp) {
+                success: function (resp) {
                     if (typeof resp == 'object' && resp.status == 'success') {
                         location.reload()
                     } else if (resp.status == 'failed' && !!resp.msg) {

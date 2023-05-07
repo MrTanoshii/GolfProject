@@ -5,19 +5,27 @@
         <input type="hidden" name="manage_user" value="1">
         <div class="form-group mb-3">
             <label for="first_name" class="control-label">First Name</label>
-            <input type="text" class="form-control rounded-0" name="first_name" id="first_name" value="{% if form.data.first_name %}{{ form.data.first_name }}{% else %}{{ user.first_name }}{% endif %}" required="required">
+            <input type="text" class="form-control rounded-0" name="first_name" id="first_name"
+                value="{% if form.data.first_name %}{{ form.data.first_name }}{% else %}{{ user.first_name }}{% endif %}"
+                required="required">
         </div>
         <div class="form-group mb-3">
             <label for="last_name" class="control-label">Last Name</label>
-            <input type="text" class="form-control rounded-0" name="last_name" id="last_name" value="{% if form.data.last_name %}{{ form.data.last_name }}{% else %}{{ user.last_name }}{% endif %}" required="required">
+            <input type="text" class="form-control rounded-0" name="last_name" id="last_name"
+                value="{% if form.data.last_name %}{{ form.data.last_name }}{% else %}{{ user.last_name }}{% endif %}"
+                required="required">
         </div>
         <div class="form-group mb-3">
             <label for="username" class="control-label">Username</label>
-            <input type="text" class="form-control rounded-0" name="username" id="username" value="{% if form.data.username %}{{ form.data.username }}{% else %}{{ user.username }}{% endif %}" required="required">
+            <input type="text" class="form-control rounded-0" name="username" id="username"
+                value="{% if form.data.username %}{{ form.data.username }}{% else %}{{ user.username }}{% endif %}"
+                required="required">
         </div>
         <div class="form-group mb-3">
             <label for="email" class="control-label">Email</label>
-            <input type="email" class="form-control rounded-0" name="email" id="email" value="{% if form.data.email %}{{ form.data.email }}{% else %}{{ user.email }}{% endif %}" required="required">
+            <input type="email" class="form-control rounded-0" name="email" id="email"
+                value="{% if form.data.email %}{{ form.data.email }}{% else %}{{ user.email }}{% endif %}"
+                required="required">
         </div>
         {% if not user.id %}
         <div class="form-group mb-3">
@@ -32,8 +40,8 @@
     </form>
 </div>
 <script>
-    $(function() {
-        $('#user-form').submit(function(e) {
+    $(function () {
+        $('#user-form').submit(function (e) {
             e.preventDefault();
             var _this = $(this)
             $('.err-msg').remove();
@@ -49,7 +57,7 @@
                 headers: {
                     "X-CSRFToken": '{{csrf_token}}'
                 },
-                url: "{% url 'save-user' %}",
+                url: "{% url 'smsApp:save-user' %}",
                 data: new FormData($(this)[0]),
                 cache: false,
                 contentType: false,
@@ -62,7 +70,7 @@
                     alert("An error occured", 'error');
                     end_loader();
                 },
-                success: function(resp) {
+                success: function (resp) {
                     if (typeof resp == 'object' && resp.status == 'success') {
                         location.reload()
                     } else if (resp.status == 'failed' && !!resp.msg) {

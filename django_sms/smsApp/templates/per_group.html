@@ -6,31 +6,29 @@
 
     .white-text {
         color: white;
-      }
-
-                .card{
-        background-color: rgba(225, 225, 225, 0.4) !important;
-        border-radius: 30px!important;
-        
     }
 
-    .card-body{
-        color: white!important;
+    .card {
+        background-color: rgba(225, 225, 225, 0.4) !important;
+        border-radius: 30px !important;
+
+    }
+
+    .card-body {
+        color: white !important;
         font-size: 17px;
     }
 
-    .text-center{
+    .text-center {
         /* font-size: 30px;
         font-weight: bold; */
-        color:rgb(0, 0, 0)!important;
+        color: rgb(0, 0, 0) !important;
     }
 
 
-    td{
-        color:white!important;
+    td {
+        color: white !important;
     }
-
-      
 </style>
 <section class="py-4">
     <div class="container">
@@ -43,12 +41,13 @@
                 <div class="container-fluid">
                     <fieldset class="p-2 border mb-4">
                         <legend class="w-auto px-3">Filter</legend>
-                        <form action="{% url 'group-member' %}" method="GET">
+                        <form action="{% url 'smsApp:group-member' %}" method="GET">
                             <div class="container-fluid">
                                 <div class="row align-items-end">
                                     <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                         <label class="control-label" for="group">Choose Group</label>
-                                        <select name="group" id="group" class="form-select form-select-sm rounded-0" required>
+                                        <select name="group" id="group" class="form-select form-select-sm rounded-0"
+                                            required>
                                             {% if not selected_group %}
                                             <option value="" selected disabled></option>
                                             {% else %}
@@ -65,7 +64,8 @@
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                         <label class="control-label" for="status">Status</label>
-                                        <select name="status" id="status" class="form-select form-select-sm rounded-0" required>
+                                        <select name="status" id="status" class="form-select form-select-sm rounded-0"
+                                            required>
                                             {% if status == '1' %}
                                             <option value="1" selected>Active</option>
                                             {% else %}
@@ -79,8 +79,11 @@
                                         </select>
                                     </div>
                                     <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                                        <button class="btn btn-sm btn-primary rounded-0 bg-gradient-primary"><i class="fa fa-filter"></i> Filter</button> {% if selected_group %}
-                                        <button class="btn btn-sm btn-light rounded-0 bg-gradient-light border" type="button" id="print"><i class="fa fa-print"></i> Print</button> {% endif %}
+                                        <button class="btn btn-sm btn-primary rounded-0 bg-gradient-primary"><i
+                                                class="fa fa-filter"></i> Filter</button> {% if selected_group %}
+                                        <button class="btn btn-sm btn-light rounded-0 bg-gradient-light border"
+                                            type="button" id="print"><i class="fa fa-print"></i> Print</button> {% endif
+                                        %}
                                     </div>
                                 </div>
                             </div>
@@ -130,44 +133,47 @@
     </div>
 </section>
 <noscript id="print-header">
-<div>
-    <div class="d-flex align-items-center">
-        <div class="col-2 text-center">
-            <img src="{% static 'images/logo.png' %}" alt="System Logo" style="height:4em;width:4em;object-fit:cover;object-position:center center" class="img-thumbnail rounded-circle">
+    <div>
+        <div class="d-flex align-items-center">
+            <div class="col-2 text-center">
+                <img src="{% static 'images/logo.png' %}" alt="System Logo"
+                    style="height:4em;width:4em;object-fit:cover;object-position:center center"
+                    class="img-thumbnail rounded-circle">
+            </div>
+            <div class="col-8 text-center">
+                <h4 class="fw-bold text-center mb-0">{{ system_name }}</h4>
+                <h5 class="fw-bold text-center mb-0">{% if status == '1' %}Active{% else %}Inactive{% endif %} Members
+                </h5>
+                <div class="text-center">of</div>
+                <h3 class="text-center mb-0">{{selected_group}}</h3>
+            </div>
         </div>
-        <div class="col-8 text-center">
-            <h4 class="fw-bold text-center mb-0">{{ system_name }}</h4>
-            <h5 class="fw-bold text-center mb-0">{% if status == '1' %}Active{% else %}Inactive{% endif %} Members</h5>
-            <div class="text-center">of</div>
-            <h3 class="text-center mb-0">{{selected_group}}</h3>
-        </div>
+        <hr>
     </div>
-    <hr>
-</div>
 </noscript> {% endblock pageContent %} {% block ScriptBlock %}
 <script>
-    $(function() {
+    $(function () {
         $('#group').select2({
             placeholder: "Please Select Group Here",
             width: "100%",
             selectionCssClass: 'form-control form-control-sm rounded-0 lh-auto'
         })
         $('#printout table').find('td, th').addClass("align-middle px-1 py-1")
-        $('#print').click(function() {
+        $('#print').click(function () {
             var h = $('head').clone()
             var ph = $($('noscript#print-header').html()).clone()
             var p = $('#printout').clone()
             start_loader()
-            h.find('link').each(function() {
+            h.find('link').each(function () {
                 var href = $(this).attr('href')
                 $(this).attr("href", "{{ system_host }}" + href)
             })
 
-            h.find('script').each(function() {
+            h.find('script').each(function () {
                 var src = $(this).attr('src')
                 $(this).attr("src", "{{ system_host }}" + src)
             })
-            ph.find('img').each(function() {
+            ph.find('img').each(function () {
                 var src = $(this).attr('src')
                 $(this).attr("src", "{{ system_host }}" + src)
             })

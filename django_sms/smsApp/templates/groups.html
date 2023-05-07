@@ -9,29 +9,28 @@
 
     .white-text {
         color: white;
-      }
-
-          .card{
-        background-color: rgba(225, 225, 225, 0.273) !important;
-        border-radius: 30px!important;
-        
     }
 
-    .card-body{
-        color: white!important;
+    .card {
+        background-color: rgba(225, 225, 225, 0.273) !important;
+        border-radius: 30px !important;
+
+    }
+
+    .card-body {
+        color: white !important;
         font-size: 17px;
     }
 
-    .text-center{
+    .text-center {
         /* font-size: 30px;
         font-weight: bold; */
-        color:white!important;
+        color: white !important;
     }
 
-    td{
-        color:white!important;
+    td {
+        color: white !important;
     }
-      
 </style>
 <section class="py-4">
     <div class="container">
@@ -43,7 +42,8 @@
             <div class="card-body">
                 <div class="container-fluid">
                     <div class="text-end mb-3">
-                        <button class="btn btn-sm btn-primary rounded-0 bg-gradient-primary" type="button" id="create_new"><i class="fa fa-plus"></i> Add New</button>
+                        <button class="btn btn-sm btn-primary rounded-0 bg-gradient-primary" type="button"
+                            id="create_new"><i class="fa fa-plus"></i> Add New</button>
                     </div>
                     <table class="table table-bordered table-striped" id="group-tbl">
                         <colgroup>
@@ -75,18 +75,30 @@
                                 </td>
                                 <td class="text-center">
                                     {% if group.status == '1' %}
-                                    <span class="badge badge-success bg-gradient bg-success px-3 rounded-pill bg-opacity-75 text-sm py-1">Active</span> {% else %}
-                                    <span class="badge badge-secondary bg-gradient bg-secondary px-3 rounded-pill bg-opacity-75 text-sm py-1">Inactive</span> {% endif %}
+                                    <span
+                                        class="badge badge-success bg-gradient bg-success px-3 rounded-pill bg-opacity-75 text-sm py-1">Active</span>
+                                    {% else %}
+                                    <span
+                                        class="badge badge-secondary bg-gradient bg-secondary px-3 rounded-pill bg-opacity-75 text-sm py-1">Inactive</span>
+                                    {% endif %}
                                 </td>
                                 <td class="text-center">
                                     <div class="dropdown">
-                                        <button class="btn btn-light btn-sm rounded-0 border dropdown-toggle" type="button" id="abtn{{group.pk}}" data-bs-toggle="dropdown" aria-expanded="false">
-                                          Action
+                                        <button class="btn btn-light btn-sm rounded-0 border dropdown-toggle"
+                                            type="button" id="abtn{{group.pk}}" data-bs-toggle="dropdown"
+                                            aria-expanded="false">
+                                            Action
                                         </button>
                                         <ul class="dropdown-menu" aria-labelledby="abtn{{group.pk}}">
-                                            <li><a class="dropdown-item view-data" href="javascript:void(0)" data-url="{% url 'view-group-pk' group.pk %}"><i class="fa fa-eye text-dark"></i> View</a></li>
-                                            <li><a class="dropdown-item edit-data" href="javascript:void(0)" data-url="{% url 'manage-group-pk' group.pk %}"><i class="fa fa-edit text-primary"></i> Edit</a></li>
-                                            <li><a class="dropdown-item delete-data" href="javascript:void(0)" data-url="{% url 'delete-group' group.pk %}"><i class="fa fa-trash text-danger"></i> Delete</a></li>
+                                            <li><a class="dropdown-item view-data" href="javascript:void(0)"
+                                                    data-url="{% url 'smsApp:view-group-pk' group.pk %}"><i
+                                                        class="fa fa-eye text-dark"></i> View</a></li>
+                                            <li><a class="dropdown-item edit-data" href="javascript:void(0)"
+                                                    data-url="{% url 'smsApp:manage-group-pk' group.pk %}"><i
+                                                        class="fa fa-edit text-primary"></i> Edit</a></li>
+                                            <li><a class="dropdown-item delete-data" href="javascript:void(0)"
+                                                    data-url="{% url 'smsApp:delete-group' group.pk %}"><i
+                                                        class="fa fa-trash text-danger"></i> Delete</a></li>
                                         </ul>
                                     </div>
                                 </td>
@@ -101,22 +113,22 @@
 </section>
 {% endblock pageContent %} {% block ScriptBlock %}
 <script>
-    $(function() {
-        $('#create_new').click(function() {
-            uni_modal("<i class='fa fa-plus'></i> Add New Group", "{% url 'manage-group' %}")
+    $(function () {
+        $('#create_new').click(function () {
+            uni_modal("<i class='fa fa-plus'></i> Add New Group", "{% url 'smsApp:manage-group' %}")
         })
-        $('.view-data').click(function() {
+        $('.view-data').click(function () {
             uni_modal("<i class='fa fa-th-list'></i> Group Details", $(this).attr('data-url'))
         })
-        $('.edit-data').click(function() {
+        $('.edit-data').click(function () {
             uni_modal("<i class='fa fa-edit'></i> Edit Group Details", $(this).attr('data-url'))
         })
-        $('.view_image').click(function() {
+        $('.view_image').click(function () {
             var img = $(this).attr('data-img-url')
             $('#viewer_modal #img-viewer-field').attr('src', img)
             $('#viewer_modal').modal('show')
         })
-        $('.delete-data').click(function() {
+        $('.delete-data').click(function () {
             _conf("Are you sure to delete this Group?", 'delete_group', ["'" + $(this).attr('data-url') + "'"])
         })
         $('#group-tbl').find('td, th').addClass('px-2 py-1 align-middle')
@@ -151,7 +163,7 @@
                 alert("an error occurred.")
                 end_loader()
             },
-            success: function(resp) {
+            success: function (resp) {
                 if (resp.status == 'success') {
                     location.reload()
                 } else if (!!resp.msg) {

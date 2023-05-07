@@ -39,7 +39,7 @@ def userregister(request):
     context["page_title"] = "User Registration"
     if request.user.is_authenticated:
         return redirect("page")
-    return render(request, "smsApp:register.html", context)
+    return render(request, "register.html", context)
 
 
 def save_register(request):
@@ -151,7 +151,7 @@ def home(request):
         models.Members.objects.filter(delete_flag=0, status=0).all().count()
     )
     context["users"] = User.objects.filter(is_superuser=False).all().count()
-    return render(request, "smsApp:home.html", context)
+    return render(request, "home.html", context)
 
 
 def logout_user(request):
